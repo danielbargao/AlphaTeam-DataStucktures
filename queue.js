@@ -1,39 +1,53 @@
-const maxSize = 4;
+const maxSize = 3;
 
 function Queue(){
   this.elements = []
 }
 
-  Queue.prototype.enqueue = function(names){
-    this.elements.push(names);
-  }
+Queue.prototype.isEmpty = function() {
+    return this.elements.length == 0;
+}
+  
+Queue.prototype.isFull = function() {
+    return this.elements.length == maxSize;
+}
+
+Queue.prototype.enqueue = function(item){
+    if (queue.isFull()){
+        return console.log("queue is full");
+    }
+    else{
+    this.elements.push(item);
+    }
+}
 
 Queue.prototype.dequeue = function() {
+    if (queue.isEmpty()){
+        return console.log("queue is empty");
+    }
   return this.elements.shift();
 }
 
-
-Queue.prototype.isEmpty = function() {
-  return this.elements.length == 0;
-}
-
-Queue.prototype.isFull = function() {
-  return this.elements.length == maxSize;
-}
 
 Queue.prototype.peek = function() {
   return this.elements[0];
 }
 
-const q = new Queue();
-console.log("Array is empty? " + q.isEmpty());
-q.enqueue("Ricardo");
-q.enqueue("Ana");
-q.enqueue("Carlos");
-q.enqueue("Teresa");
-console.log(q);
-console.log("Array is full? " + q.isFull());
-console.log("peek: " + q.peek());
-console.log("dequeue: " + q.dequeue());
-console.log("peek: " + q.peek());
-console.log(q);
+const queue = new Queue();
+console.log("Array is empty? " + queue.isEmpty());
+queue.enqueue("1");
+queue.enqueue("2");
+console.log("peek: " + queue.peek());
+queue.enqueue("3");
+queue.enqueue("4");
+console.log(queue);
+console.log("Array is full? " + queue.isFull());
+console.log("peek: " + queue.peek());
+console.log("dequeue: " + queue.dequeue());
+console.log("peek: " + queue.peek());   
+console.log(queue);
+console.log("dequeue: " + queue.dequeue());
+console.log("dequeue: " + queue.dequeue());
+console.log("dequeue: " + queue.dequeue());
+
+
